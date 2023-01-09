@@ -1445,6 +1445,17 @@ background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, F
   color: #006064;
 }
 
+#primary{
+   background: linear-gradient(to right, #5C6BC0 0, hsl(0, 0%, 100%) 5%, #07569f 20%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+
+  font-weight: 500;
+  color: #07569f;
+  text-decoration: #07569f;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 
 #secondary{
   color: #6200EA;
