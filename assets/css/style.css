@@ -594,6 +594,9 @@ section {
   font-family: "Raleway", sans-serif;
   font-size: 14px;
 }
+/* .section-bg {
+  background-color: #eee;
+} */
 
 /*--------------------------------------------------------------
 # Akills
@@ -1282,7 +1285,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #f7f8f9;
+  background: #1f1f24;
   color: #45505b;
   font-size: 14px;
   text-align: center;
@@ -1366,19 +1369,19 @@ section {
     margin-left: -25px;
     }  
 
-    .fservices__boxx{
+    /* .fservices__boxx{
   padding: 50px;
   width: 53vh;  
   margin: 20px auto;  
   background: #23263a;
   color: #fff;
-}
+} */
 
-#fservices__boxx{
+/* #fservices__boxx{
 
-  background: #D3CCE3;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #D3CCE3;  
+background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  
+background: linear-gradient(to right, #E9E4F0, #D3CCE3); 
 
 
 
@@ -1386,10 +1389,8 @@ background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, F
 border-radius: 10px;	
   box-shadow: 0 0 1px rgba(0, 225, 255, 0.178),
                 0 0 8px rgba(0, 225, 255, 0.164),
-                 /* 0 0 15px rgba(0, 226, 255, 1),
-                 0 0 20px rgba(0, 226, 255, 1), */
                 0 0 0 1px rgba(255, 214, 0, .1);
-}
+} */
 
 #fservices__boxx:hover {
   -webkit-box-sizing: border-box;
