@@ -383,6 +383,22 @@ h6 {
   z-index: 200;
 }
 
+    /* Règles @media pour les tailles d'écran spécifiques */
+    @media (max-width: 768px) { /* Écrans de taille moyenne et plus petits */
+        .bbannier__img {
+            padding: 6rem 5px; /* Réduire l'espacement horizontal sur les côtés */
+        }
+      
+    }
+
+    @media (max-width: 576px) { /* Écrans petits */
+      .bbannier__img {
+            padding: 6rem  5px; /* Aucun espacement horizontal sur les côtés */
+        }
+        .imgP {
+            display: none; /* Masquer l'image sur les écrans petits */
+        }
+    }
 
 
 /* #hero {
