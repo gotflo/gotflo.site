@@ -1,3 +1,25 @@
+/**
+ * Theme Manager - Initialize BEFORE anything else to prevent flash
+ */
+(function initTheme() {
+  const saved = localStorage.getItem('gotflo-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'dark'); // default dark
+
+  // Prevent transition flash on load
+  document.body.classList.add('no-transition');
+  document.documentElement.setAttribute('data-theme', theme);
+
+  window.addEventListener('load', () => {
+    // Re-enable transitions after a brief delay
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.body.classList.remove('no-transition');
+      });
+    });
+  });
+})();
+
 (function() {
   "use strict";
 
@@ -246,7 +268,33 @@
   });
 
   /**
-   * Contact Form Handling
+   * EmailJS Configuration
+   * =====================
+   * INSTRUCTIONS: Replace these 3 values with your own from emailjs.com
+   *
+   * 1. Go to https://www.emailjs.com/ → Create free account
+   * 2. Add Email Service (Gmail) → Copy your SERVICE_ID
+   * 3. Create Email Template with variables:
+   *    - {{from_name}}   → sender's name
+   *    - {{from_email}}  → sender's email
+   *    - {{subject}}     → email subject
+   *    - {{message}}     → email message
+   *    → Copy your TEMPLATE_ID
+   * 4. Go to Account → API Keys → Copy your PUBLIC_KEY
+   */
+  const EMAILJS_CONFIG = {
+    publicKey:  'OGB_QN5cTEkY2MC2D',
+    serviceId:  'service_jdufvth',
+    templateId: 'template_jh266nf'
+  };
+
+  // Initialize EmailJS
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_CONFIG.publicKey);
+  }
+
+  /**
+   * Contact Form Handling with EmailJS
    */
   const contactForm = select('#contact-form');
   if (contactForm) {
@@ -257,10 +305,12 @@
       const emailInput = select('#email');
       const subjectInput = select('#subject');
       const messageInput = select('#message');
+      const submitBtn = select('.submit-btn');
       const loading = select('.loading');
       const sentMessage = select('.sent-message');
       const errorResponse = select('.error-response');
 
+      // Reset states
       sentMessage.style.display = 'none';
       errorResponse.style.display = 'none';
 
@@ -270,6 +320,7 @@
         error.textContent = '';
       });
 
+      // Validation
       let isValid = true;
 
       if (nameInput.value.trim().length < 2) {
@@ -295,33 +346,61 @@
 
       if (!isValid) return;
 
-      loading.style.display = 'block';
+      // Check if EmailJS is configured
+      if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
+        errorResponse.style.display = 'block';
+        errorResponse.textContent = '⚠️ EmailJS is not configured yet. Please update the API keys in main.js';
+        return;
+      }
 
-      const formData = {
-        name: nameInput.value.trim(),
-        email: emailInput.value.trim(),
-        subject: subjectInput.value.trim(),
-        message: messageInput.value.trim()
+      // Show loading & disable button
+      loading.style.display = 'block';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      // Prepare template parameters
+      const templateParams = {
+        from_name:  nameInput.value.trim(),
+        from_email: emailInput.value.trim(),
+        subject:    subjectInput.value.trim(),
+        message:    messageInput.value.trim()
       };
 
-      sendEmail(formData)
+      // Send via EmailJS
+      emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
         .then(() => {
           loading.style.display = 'none';
           sentMessage.style.display = 'block';
           contactForm.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
 
           setTimeout(() => {
             sentMessage.style.display = 'none';
-          }, 5000);
+          }, 6000);
         })
         .catch((error) => {
           loading.style.display = 'none';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
           errorResponse.style.display = 'block';
-          errorResponse.textContent = 'Failed to send message. Please try again later.';
+
+          // User-friendly error messages
+          if (error.status === 412) {
+            errorResponse.textContent = 'EmailJS configuration error. Please check your Service ID and Template ID.';
+          } else if (error.status === 422) {
+            errorResponse.textContent = 'Invalid email template parameters. Please check your template setup.';
+          } else if (error.status === 429) {
+            errorResponse.textContent = 'Too many requests. Please wait a moment and try again.';
+          } else {
+            errorResponse.textContent = 'Failed to send message. Please try again or contact me directly at komlagotlieb@gmail.com';
+          }
 
           setTimeout(() => {
             errorResponse.style.display = 'none';
-          }, 5000);
+          }, 8000);
+
+          console.error('EmailJS Error:', error);
         });
     });
   }
@@ -332,12 +411,6 @@
       errorElement.textContent = message;
       errorElement.classList.add('show');
     }
-  }
-
-  async function sendEmail(formData) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, 2000);
-    });
   }
 
   /**
@@ -523,15 +596,83 @@
   });
 
   /**
-   * Scroll-based Navbar transparency
+   * Scroll-based Navbar transparency (theme-aware)
    */
   const header = select('#header');
+  const updateHeaderBg = () => {
+    if (!header) return;
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    if (window.scrollY > 100) {
+      header.style.background = isDark ? 'rgba(15, 11, 26, 0.95)' : 'rgba(248, 250, 252, 0.95)';
+    } else {
+      header.style.background = isDark ? 'rgba(15, 11, 26, 0.8)' : 'rgba(248, 250, 252, 0.85)';
+    }
+  };
   if (header) {
-    onscroll(document, () => {
-      if (window.scrollY > 100) {
-        header.style.background = 'rgba(15, 11, 26, 0.95)';
-      } else {
-        header.style.background = 'rgba(15, 11, 26, 0.8)';
+    onscroll(document, updateHeaderBg);
+    updateHeaderBg();
+  }
+
+  /**
+   * Theme Toggle System
+   */
+  const themeToggle = select('#themeToggle');
+  if (themeToggle) {
+    const getCurrentTheme = () => {
+      return document.documentElement.getAttribute('data-theme') || 'dark';
+    };
+
+    const setTheme = (theme) => {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('gotflo-theme', theme);
+      updateHeaderBg();
+      updateParticleColors(theme);
+    };
+
+    themeToggle.addEventListener('click', () => {
+      const current = getCurrentTheme();
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+    });
+
+    // Update particle colors based on theme
+    const updateParticleColors = (theme) => {
+      const particles = select('.particle', true);
+      if (!particles.length) return;
+
+      const darkColors = [
+        'rgba(167, 139, 250, 0.6)',
+        'rgba(6, 182, 212, 0.5)',
+        'rgba(236, 72, 153, 0.4)',
+        'rgba(245, 158, 11, 0.3)'
+      ];
+      const lightColors = [
+        'rgba(124, 58, 237, 0.25)',
+        'rgba(6, 182, 212, 0.2)',
+        'rgba(236, 72, 153, 0.15)',
+        'rgba(245, 158, 11, 0.12)'
+      ];
+
+      const colors = theme === 'light' ? lightColors : darkColors;
+      particles.forEach(p => {
+        p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      });
+    };
+
+    // Listen for OS-level theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('gotflo-theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+
+    // Keyboard shortcut: Alt+T to toggle theme
+    document.addEventListener('keydown', (e) => {
+      if (e.altKey && e.key === 't') {
+        e.preventDefault();
+        const current = getCurrentTheme();
+        const next = current === 'dark' ? 'light' : 'dark';
+        setTheme(next);
       }
     });
   }
