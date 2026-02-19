@@ -32,6 +32,16 @@
 
 <body>
 
+  <!-- Background Decorative Elements -->
+  <div class="bg-orbs">
+    <div class="bg-orb"></div>
+    <div class="bg-orb"></div>
+    <div class="bg-orb"></div>
+  </div>
+  <div class="grid-pattern"></div>
+  <div class="floating-particles" id="particles"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
 
@@ -60,18 +70,23 @@
       <p class="hero-description">Specializing in Cognitive State Detection & Emotion AI</p>
 
       <div class="social-links">
-        <a href="https://github.com/gotflo" class="github" aria-label="GitHub"><i class="bx bxl-github"></i></a>
-        <a href="https://twitter.com/FlorentGotliebe" class="twitter" aria-label="Twitter"><i
+        <a href="https://github.com/gotflo" class="github" aria-label="GitHub" data-tooltip="GitHub"><i class="bx bxl-github"></i></a>
+        <a href="https://twitter.com/FlorentGotliebe" class="twitter" aria-label="Twitter" data-tooltip="Twitter"><i
             class="bx bxl-twitter"></i></a>
-        <a href="https://www.linkedin.com/in/gotflo/" class="linkedin" aria-label="LinkedIn"><i
+        <a href="https://www.linkedin.com/in/gotflo/" class="linkedin" aria-label="LinkedIn" data-tooltip="LinkedIn"><i
             class="bx bxl-linkedin"></i></a>
-        <a href="https://wa.me/14187181876" class="whatsapp" aria-label="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
+        <a href="https://wa.me/14187181876" class="whatsapp" aria-label="WhatsApp" data-tooltip="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
       </div>
 
       <div class="hero-buttons">
-        <a href="#portfolio" class="btn-primary">View My Work</a>
-        <a href="#contact" class="btn-secondary">Get In Touch</a>
+        <a href="#portfolio" class="btn-primary scrollto">View My Work</a>
+        <a href="#contact" class="btn-secondary scrollto">Get In Touch</a>
       </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="mouse"></div>
     </div>
   </section>
 
@@ -124,8 +139,30 @@
           </div>
         </div>
 
+        <!-- Stats Bar -->
+        <div class="stats-bar" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-item">
+            <span class="stat-number" data-count="6">0</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="3">0</span>
+            <span class="stat-label">Years Exp.</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="10">0</span>
+            <span class="stat-label">Technologies</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="3">0</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+        </div>
+
       </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <!-- ======= Skills Section ======= -->
     <section id="skills" class="skills section-bg">
@@ -283,6 +320,8 @@
       </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- ======= Resume Section ======= -->
     <section id="resume" class="resume">
       <div class="container" data-aos="fade-up">
@@ -347,6 +386,8 @@
 
       </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio section-bg">
@@ -476,6 +517,8 @@
       </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
@@ -529,6 +572,8 @@
 
       </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact section-bg">

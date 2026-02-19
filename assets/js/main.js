@@ -28,7 +28,7 @@
   }
 
   /**
-   * Easy on scroll event listener 
+   * Easy on scroll event listener
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
@@ -126,8 +126,12 @@
   if (preloader) {
     window.addEventListener('load', () => {
       setTimeout(() => {
-        preloader.remove()
-      }, 100)
+        preloader.style.opacity = '0';
+        preloader.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+          preloader.remove();
+        }, 500);
+      }, 300)
     });
   }
 
@@ -170,13 +174,13 @@
     const checkSkills = () => {
       let windowHeight = window.innerHeight;
       let skillsTop = skillsSection.getBoundingClientRect().top;
-      
+
       if (skillsTop < windowHeight * 0.75 && !skillsAnimated) {
         animateSkills();
         skillsAnimated = true;
       }
     }
-    
+
     window.addEventListener('scroll', checkSkills);
     window.addEventListener('load', checkSkills);
   }
@@ -213,14 +217,14 @@
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   const portfolioLightbox = GLightbox({
     selector: '.portfolio-lightbox'
   });
 
   /**
-   * Initiate portfolio details lightbox 
+   * Initiate portfolio details lightbox
    */
   const portfolioDetailsLightbox = GLightbox({
     selector: '.portfolio-details-lightbox',
@@ -233,10 +237,11 @@
    */
   window.addEventListener('load', () => {
     AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
+      duration: 800,
+      easing: 'ease-out-cubic',
       once: true,
-      mirror: false
+      mirror: false,
+      offset: 80
     })
   });
 
@@ -247,8 +252,7 @@
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      
-      // Get form elements
+
       const nameInput = select('#name');
       const emailInput = select('#email');
       const subjectInput = select('#subject');
@@ -256,68 +260,56 @@
       const loading = select('.loading');
       const sentMessage = select('.sent-message');
       const errorResponse = select('.error-response');
-      
-      // Reset messages
+
       sentMessage.style.display = 'none';
       errorResponse.style.display = 'none';
-      
-      // Clear previous errors
+
       const errorMessages = select('.error-message', true);
       errorMessages.forEach(error => {
         error.classList.remove('show');
         error.textContent = '';
       });
-      
-      // Validate form
+
       let isValid = true;
-      
-      // Validate name
+
       if (nameInput.value.trim().length < 2) {
         showError(nameInput, 'Please enter a valid name (at least 2 characters)');
         isValid = false;
       }
-      
-      // Validate email
+
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(emailInput.value.trim())) {
         showError(emailInput, 'Please enter a valid email address');
         isValid = false;
       }
-      
-      // Validate subject
+
       if (subjectInput.value.trim().length < 3) {
         showError(subjectInput, 'Please enter a subject (at least 3 characters)');
         isValid = false;
       }
-      
-      // Validate message
+
       if (messageInput.value.trim().length < 10) {
         showError(messageInput, 'Please enter a message (at least 10 characters)');
         isValid = false;
       }
-      
+
       if (!isValid) return;
-      
-      // Show loading
+
       loading.style.display = 'block';
-      
-      // Prepare form data
+
       const formData = {
         name: nameInput.value.trim(),
         email: emailInput.value.trim(),
         subject: subjectInput.value.trim(),
         message: messageInput.value.trim()
       };
-      
-      // Send form using EmailJS or custom backend
-      // For now, we'll simulate a successful submission
+
       sendEmail(formData)
         .then(() => {
           loading.style.display = 'none';
           sentMessage.style.display = 'block';
           contactForm.reset();
-          
-          // Hide success message after 5 seconds
+
           setTimeout(() => {
             sentMessage.style.display = 'none';
           }, 5000);
@@ -326,18 +318,14 @@
           loading.style.display = 'none';
           errorResponse.style.display = 'block';
           errorResponse.textContent = 'Failed to send message. Please try again later.';
-          
-          // Hide error message after 5 seconds
+
           setTimeout(() => {
             errorResponse.style.display = 'none';
           }, 5000);
         });
     });
   }
-  
-  /**
-   * Show error message for input
-   */
+
   function showError(input, message) {
     const errorElement = input.parentElement.querySelector('.error-message');
     if (errorElement) {
@@ -345,58 +333,217 @@
       errorElement.classList.add('show');
     }
   }
-  
-  /**
-   * Send email function
-   * Replace this with your actual email service (EmailJS, custom API, etc.)
-   */
+
   async function sendEmail(formData) {
-    // Option 1: Using EmailJS (recommended)
-    // First, sign up at https://www.emailjs.com/ and get your credentials
-    // Uncomment and configure the following:
-    /*
-    emailjs.init("YOUR_PUBLIC_KEY");
-    
-    return emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-      from_name: formData.name,
-      from_email: formData.email,
-      subject: formData.subject,
-      message: formData.message,
-      to_email: "komlagotlieb@gmail.com"
-    });
-    */
-    
-    // Option 2: Using a custom backend API
-    // Uncomment and configure the following:
-    /*
-    return fetch('YOUR_API_ENDPOINT', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData)
-    }).then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    });
-    */
-    
-    // For demonstration, simulate a successful send after 2 seconds
     return new Promise((resolve) => {
       setTimeout(resolve, 2000);
     });
   }
-  
+
   /**
-   * Smooth scroll for all anchor links
+   * Cursor Glow Effect
+   */
+  const cursorGlow = select('#cursorGlow');
+  if (cursorGlow && window.matchMedia('(pointer: fine)').matches) {
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorGlow.classList.add('active');
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursorGlow.classList.remove('active');
+    });
+
+    const animateCursor = () => {
+      glowX += (mouseX - glowX) * 0.15;
+      glowY += (mouseY - glowY) * 0.15;
+      cursorGlow.style.left = glowX + 'px';
+      cursorGlow.style.top = glowY + 'px';
+      requestAnimationFrame(animateCursor);
+    };
+    animateCursor();
+  }
+
+  /**
+   * Floating Particles Generator
+   */
+  const particlesContainer = select('#particles');
+  if (particlesContainer) {
+    const createParticle = () => {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+
+      const size = Math.random() * 3 + 1;
+      const left = Math.random() * 100;
+      const duration = Math.random() * 15 + 10;
+      const delay = Math.random() * 10;
+      const opacity = Math.random() * 0.4 + 0.1;
+
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      particle.style.left = left + '%';
+      particle.style.animationDuration = duration + 's';
+      particle.style.animationDelay = delay + 's';
+      particle.style.opacity = '0';
+
+      // Vary particle colors
+      const colors = [
+        'rgba(167, 139, 250, 0.6)',
+        'rgba(6, 182, 212, 0.5)',
+        'rgba(236, 72, 153, 0.4)',
+        'rgba(245, 158, 11, 0.3)'
+      ];
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+      particlesContainer.appendChild(particle);
+    };
+
+    // Create initial particles
+    for (let i = 0; i < 25; i++) {
+      createParticle();
+    }
+  }
+
+  /**
+   * Stats Counter Animation
+   */
+  const animateCounters = () => {
+    const counters = select('[data-count]', true);
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-count'));
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+
+      const updateCounter = () => {
+        current += step;
+        if (current < target) {
+          counter.textContent = Math.floor(current) + '+';
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target + '+';
+        }
+      };
+      updateCounter();
+    });
+  };
+
+  // Trigger counter animation when About section is visible
+  const aboutSection = select('#about');
+  if (aboutSection) {
+    let countersAnimated = false;
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersAnimated) {
+          animateCounters();
+          countersAnimated = true;
+        }
+      });
+    }, { threshold: 0.3 });
+    counterObserver.observe(aboutSection);
+  }
+
+  /**
+   * Smooth Parallax on Scroll
+   */
+  const parallaxElements = select('[data-parallax]', true);
+  if (parallaxElements.length > 0) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      parallaxElements.forEach(el => {
+        const speed = parseFloat(el.getAttribute('data-parallax')) || 0.5;
+        el.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    });
+  }
+
+  /**
+   * Magnetic Hover Effect for buttons
+   */
+  const magneticButtons = select('.btn-primary, .btn-secondary, .submit-btn', true);
+  magneticButtons.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+
+  /**
+   * Tilt Effect on Cards
+   */
+  const tiltCards = select('.education-card, .service-box, .portfolio-wrap', true);
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+
+      const tiltX = (y - 0.5) * 8;
+      const tiltY = (x - 0.5) * -8;
+
+      card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-5px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    });
+
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'none';
+    });
+  });
+
+  /**
+   * Smooth reveal sections
+   */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -80px 0px'
+  });
+
+  document.querySelectorAll('section').forEach(section => {
+    revealObserver.observe(section);
+  });
+
+  /**
+   * Scroll-based Navbar transparency
+   */
+  const header = select('#header');
+  if (header) {
+    onscroll(document, () => {
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(15, 11, 26, 0.95)';
+      } else {
+        header.style.background = 'rgba(15, 11, 26, 0.8)';
+      }
+    });
+  }
+
+  /**
+   * Smooth scroll for anchor links
    */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
       if (href === '#') return;
-      
+
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
@@ -406,43 +553,6 @@
         });
       }
     });
-  });
-  
-  /**
-   * Add subtle parallax effect to hero section
-   */
-  const hero = select('#hero');
-  if (hero) {
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const parallax = hero.querySelector('::before');
-      const speed = 0.5;
-      
-      if (parallax) {
-        parallax.style.transform = `translateY(${scrolled * speed}px)`;
-      }
-    });
-  }
-  
-  /**
-   * Animate elements on scroll
-   */
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
-      }
-    });
-  }, observerOptions);
-  
-  // Observe all sections
-  document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
   });
 
 })();
