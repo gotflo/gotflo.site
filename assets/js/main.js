@@ -283,9 +283,9 @@
    * 4. Go to Account → API Keys → Copy your PUBLIC_KEY
    */
   const EMAILJS_CONFIG = {
-    publicKey:  'OGB_QN5cTEkY2MC2D',
-    serviceId:  'service_jdufvth',
-    templateId: 'template_jh266nf'
+    publicKey:  APP_CONFIG?.emailjs?.publicKey  || 'YOUR_PUBLIC_KEY',
+    serviceId:  APP_CONFIG?.emailjs?.serviceId  || 'YOUR_SERVICE_ID',
+    templateId: APP_CONFIG?.emailjs?.templateId || 'YOUR_TEMPLATE_ID'
   };
 
   // Initialize EmailJS

@@ -1,0 +1,25 @@
+# =========================
+#  Gotflo Portfolio — .gitignore
+# =========================
+
+# API Keys & Secrets (IMPORTANT)
+# assets/js/config.js
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (if ever added)
+node_modules/
+package-lock.json
+
+# Logs
+*.log

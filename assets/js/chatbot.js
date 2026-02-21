@@ -13,7 +13,7 @@
  */
 
 const GEMINI_CONFIG = {
-  apiKey: 'AIzaSyCNLDA_6uGKsKdv16PQ-jkI-kO8BfKAoeQ',
+  apiKey: APP_CONFIG?.gemini?.apiKey || 'MISSING_API_KEY',
   model: 'gemini-3-flash-preview',      // Primary model (latest Gemini 3 Flash)
   fallbackModel: 'gemini-2.5-flash',    // Fallback: stable Gemini 2.5 Flash
   apiUrl: 'https://generativelanguage.googleapis.com/v1beta/models',
