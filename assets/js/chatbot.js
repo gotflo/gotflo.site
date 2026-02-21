@@ -13,7 +13,7 @@
  */
 
 const GEMINI_CONFIG = {
-  apiKey: APP_CONFIG?.gemini?.apiKey || 'MISSING_API_KEY',
+  get apiKey() { return APP_CONFIG?.gemini?.apiKey || 'MISSING_API_KEY'; },
   model: 'gemini-3-flash-preview',      // Primary model (latest Gemini 3 Flash)
   fallbackModel: 'gemini-2.5-flash',    // Fallback: stable Gemini 2.5 Flash
   apiUrl: 'https://generativelanguage.googleapis.com/v1beta/models',
@@ -611,8 +611,12 @@ Posez-moi vos questions ou utilisez les suggestions ci-dessous !`;
 }
 
 /**
- * Initialize chatbot when DOM is ready
+ * Initialize chatbot when DOM is ready AND config is loaded
  */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // Attendre que le .env soit chargé
+  if (typeof configReady !== 'undefined') {
+    await configReady;
+  }
   window.gotfloChatBot = new GotfloChatBot();
 });

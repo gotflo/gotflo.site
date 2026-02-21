@@ -19,3 +19,6 @@ const APP_CONFIG = {
     templateId: 'YOUR_EMAILJS_TEMPLATE_ID',
   }
 };
+
+// Signal que la config est prête
+const configReady = Promise.resolve();

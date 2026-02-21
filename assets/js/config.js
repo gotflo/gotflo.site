@@ -3,18 +3,16 @@
  *  Configuration — API Keys & Secrets
  * ==========================================================
  *
- *  Ce fichier contient les clés API sensibles.
- *  ⚠️  NE PAS committer ce fichier dans Git !
- *      Il est listé dans .gitignore
+ *  ⚠️  Ce fichier est EXCLU de Git (.gitignore)
  *
- *  Pour déployer :
+ *  Setup :
  *  1. Copier config.example.js → config.js
- *  2. Remplacer les valeurs par vos vraies clés
+ *  2. Remplacer les valeurs par vos vraies clés API
  */
 
 const APP_CONFIG = {
   gemini: {
-    apiKey: 'AIzaSyCLdv3j9uFrOUGTTPSSn5DWBnEk6dQlLT8',
+    apiKey: 'AIzaSyAbDEtNp-GJRQ2MqmfYDYUS8e9DApjVEgY',
   },
   emailjs: {
     publicKey: 'OGB_QN5cTEkY2MC2D',
@@ -22,3 +20,7 @@ const APP_CONFIG = {
     templateId: 'template_jh266nf',
   }
 };
+
+// Signal que la config est prête (pour compatibilité avec await configReady)
+const configReady = Promise.resolve();
+console.log('✅ Configuration loaded');
