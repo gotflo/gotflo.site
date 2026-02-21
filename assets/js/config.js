@@ -12,7 +12,7 @@
 
 const APP_CONFIG = {
   gemini: {
-    apiKey: 'AIzaSyAbDEtNp-GJRQ2MqmfYDYUS8e9DApjVEgY',
+    apiKey: 'AIzaSyC_89vYrJifwcueWI3t_xw_yfNHaqUIVLk',
   },
   emailjs: {
     publicKey: 'OGB_QN5cTEkY2MC2D',
