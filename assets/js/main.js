@@ -283,20 +283,16 @@
    * 4. Go to Account → API Keys → Copy your PUBLIC_KEY
    */
   const EMAILJS_CONFIG = {
-    get publicKey()  { return APP_CONFIG?.emailjs?.publicKey  || 'YOUR_PUBLIC_KEY'; },
-    get serviceId()  { return APP_CONFIG?.emailjs?.serviceId  || 'YOUR_SERVICE_ID'; },
-    get templateId() { return APP_CONFIG?.emailjs?.templateId || 'YOUR_TEMPLATE_ID'; }
+    publicKey:  APP_CONFIG?.emailjs?.publicKey  || 'YOUR_PUBLIC_KEY',
+    serviceId:  APP_CONFIG?.emailjs?.serviceId  || 'YOUR_SERVICE_ID',
+    templateId: APP_CONFIG?.emailjs?.templateId || 'YOUR_TEMPLATE_ID'
   };
 
-  // Initialize EmailJS (après chargement du .env)
-  async function initEmailJS() {
-    if (typeof configReady !== 'undefined') await configReady;
-    if (typeof emailjs !== 'undefined') {
-      emailjs.init(EMAILJS_CONFIG.publicKey);
-      console.log('✅ EmailJS initialized');
-    }
+  // Initialize EmailJS
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_CONFIG.publicKey);
+    console.log('✅ EmailJS initialized');
   }
-  initEmailJS();
 
   /**
    * Contact Form Handling with EmailJS

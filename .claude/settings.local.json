@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node api-key-obfuscator.js:*)",
+      "Bash(node:*)"
+    ]
+  }
+}
