@@ -1065,6 +1065,9 @@ section {
   border-radius: var(--radius-xl);
   padding: 8px 16px;
   display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
   gap: 4px;
 }
 
@@ -1089,6 +1092,18 @@ section {
   box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
 }
 
+@media (max-width: 767px) {
+  .portfolio #portfolio-flters {
+    border-radius: var(--radius-lg);
+    padding: 8px 10px;
+  }
+
+  .portfolio #portfolio-flters li {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+}
+
 .portfolio .portfolio-wrap {
   transition: var(--transition-bounce);
   position: relative;
@@ -1108,6 +1123,11 @@ section {
 }
 
 .portfolio .portfolio-wrap img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
   transition: var(--transition-smooth);
 }
 
@@ -1134,6 +1154,7 @@ section {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 20px;
+  overflow: hidden;
 }
 
 .portfolio .portfolio-wrap:hover .portfolio-info {
@@ -1153,6 +1174,10 @@ section {
   padding: 0 15px;
   margin-bottom: 20px;
   line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .portfolio .portfolio-wrap .portfolio-links {
