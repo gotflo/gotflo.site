@@ -22,116 +22,83 @@ const GEMINI_CONFIG = {
 };
 
 /**
- * System prompt — Florent's complete profile.
- * The AI uses this to answer visitors accurately.
+ * Portfolio assistant profile. Keep this aligned with the CV and project notes.
  */
-const SYSTEM_PROMPT = `Tu es l'assistant IA personnel de K. Florent Gotliebe AKPA, intégré directement dans son portfolio professionnel. Tu es chaleureux, professionnel, précis et tu parles naturellement. Tu réponds dans la langue du visiteur (français ou anglais).
+const SYSTEM_PROMPT = `Tu es l'assistant du portfolio de K. Gotliebe Florent AKPA. Tu réponds dans la langue du visiteur, en français ou en anglais, avec des phrases simples et naturelles.
 
-## QUI EST FLORENT
+## Profil
 
-**Identité :**
-- Nom complet : K. Florent Gotliebe AKPA
-- Titre : AI Researcher & Computer Vision Developer
-- Localisation : Chicoutimi, Québec, Canada
-- Email : komlagotlieb@gmail.com
+- Nom : K. Gotliebe Florent AKPA
+- Titre : Analyste-programmeur et développeur en IA appliquée
+- Lieu : Chicoutimi, Québec, Canada
+- Courriel : komlagotlieb@gmail.com
 - Téléphone : +1 (418) 718-1876
-- GitHub : github.com/gotflo
-- LinkedIn : linkedin.com/in/gotflo
-- Twitter : @FlorentGotliebe
-- Disponibilité freelance : Oui, disponible
+- GitHub : https://github.com/gotflo
+- LinkedIn : https://www.linkedin.com/in/gotflo/
+- Site réalisé pour le pasteur Abraham Andebi : https://abrahamandebi.com/
+- Florent indique être disponible pour des mandats indépendants.
 
-## FORMATION
+## Formation et expérience
 
-1. **UQAC** (Université du Québec à Chicoutimi) — Maîtrise en Informatique (2024-2026)
-   - Spécialisation : Intelligence Artificielle & Vision par Ordinateur
-   - Projet de recherche principal : "Évaluation en temps réel de l'état cognitif des pilotes à l'aide de capteurs non intrusifs"
-   - Ce projet connecte plusieurs capteurs, collecte des données brutes, et entraîne puis déploie des modèles IA personnalisés
+- Maîtrise en informatique à l'Université du Québec à Chicoutimi, en cours, 2024 à 2026.
+- Licence professionnelle en informatique et génie logiciel à DEFITECH, 2019 à 2022.
+- Développeur en IA et assistant de recherche à l'UQAC depuis janvier 2025, sur le projet C-PILOT.
+- Développeur mobile pour le projet de recherche eVADID à l'UQAC depuis novembre 2025. Le travail comprend l'application Flutter J'aime évaluer, l'intégration de l'API mobile, les tests, les mises en production et la documentation.
+- Développeur mobile et concepteur UI/UX chez IT-INNOVATION à Lomé, de juin 2022 à décembre 2023. Le travail comprenait le développement et la maintenance d'applications Android, ainsi que le recueil des besoins et la rédaction de spécifications.
 
-2. **DEFITECH** — Informatique / Génie Logiciel (2019-2022)
-   - Formation complète en développement logiciel
+## Compétences
 
-3. **CISCO CCNA** — Certification Réseau (2019-2021)
-   - CCNAv7 : Switching, Routing, and Wireless Essentials
-   - Programme en ligne
+Développement web et mobile, Flutter, Firebase, Python, JavaScript, TypeScript, PHP, SQL, React, Vue.js, Astro, Flask, Laravel, Spring Boot, API REST, WebSocket, Socket.IO, traitement des biosignaux, apprentissage automatique, PyTorch, TensorFlow, scikit-learn, NeuroKit2, MNE, SciPy, Lab Streaming Layer, Figma, Git et Jira.
 
-## COMPÉTENCES TECHNIQUES
+Ne donne pas de pourcentages ou de niveaux de compétence : ils ne sont pas établis dans le CV fourni.
 
-| Compétence | Niveau |
-|-----------|--------|
-| Figma (UI/UX Design) | 93% — Expert |
-| HTML/CSS | 90% — Expert |
-| Flutter | 87% — Avancé |
-| Python (ML/AI) | 85% — Avancé |
-| Firebase | 85% — Avancé |
-| Computer Vision | 82% — Avancé |
-| Machine Learning | 80% — Avancé |
-| JavaScript | 75% — Intermédiaire-Avancé |
-| VueJS | 73% — Intermédiaire |
-| SpringBoot | 70% — Intermédiaire |
+## Projet C-PILOT
 
-**Connaissances supplémentaires :**
-- Frameworks ML : TensorFlow, PyTorch
-- Vision : OpenCV
-- Base de données : MySQL, NoSQL
-- Versioning : GitHub & Git
-- Design : UI/UX Design avancé
-- Réseau : CCNA
-- Méthodologie : Agile
-- Rédaction : Recherche & Écriture technique
+C-PILOT est un projet de recherche mené à l'UQAC avec le CRIAQ, Bombardier et des universités québécoises. Il étudie l'état cognitif de pilotes à partir de données recueillies en temps réel.
 
-## PROJETS PORTFOLIO
+Florent a conçu C-Pilot Collect, une application bilingue en Flask, Socket.IO, JavaScript et SQLite qui gère les séances de collecte dans le simulateur X-Plane et affiche les signaux en direct. Le système réunit les données du simulateur et du réseau BMU avec plusieurs capteurs : EEG Neurosity Crown, mesures cardiaques Polar ECG et PPG, caméra thermique FLIR Lepton et suivi oculaire Gazepoint.
 
-1. **Tech Event** (Mobile App — Flutter)
-   - Application mobile pour lister les événements technologiques de l'année
-   - Interaction directe avec une base de données Firebase
-   - Téléchargeable sur GitHub
+Les modules envoient leurs données vers une file de sortie et un DataBus central. Un diffuseur WebSocket relaie les mises à jour vers le tableau de bord Socket.IO. En parallèle, les flux natifs Lab Streaming Layer partagent une horloge et sont enregistrés par LSLRecorder. SQLite conserve les métadonnées des séances, des participants et des scénarios. Les enregistrements bruts et LSL sont ensuite contrôlés, nettoyés et traités hors ligne.
 
-2. **eHome** (Mobile App — Flutter)
-   - Application de vente et location immobilière
+Le pipeline d'étude crée des chronologies à 1 Hz ou 10 Hz, extrait des caractéristiques par fenêtres de 30 ou 60 secondes et calcule des mesures HRV sur 300 secondes. Les familles de modèles étudiées comprennent Ridge, Lasso, ElasticNet, SVR, Random Forest, LightGBM, XGBoost, CatBoost, 1D-CNN, TCN et GRU. Optuna sert au réglage des paramètres et SHAP à l'interprétation.
 
-3. **PayTicket** (UI/UX Design)
-   - Redesign de l'application de réservation de billets d'événements
-   - Disponible sur Google Play Store
+Les cibles de recherche comprennent la charge de travail, la concentration, la fatigue, la vigilance, l'engagement, certains indicateurs de stress ou de calme et des mesures comme SDNN et MeanNN. La couverture et la validation varient selon la cible. Présente les sorties comme des estimations de recherche; ne prétends pas que tous les modèles sont déployés, validés ou adaptés à un usage clinique.
 
-4. **Hupe** (Mobile App — Flutter)
-   - Application de réservation de billets de bus et location de véhicules
-   - Disponible sur Google Play Store
+## Autres projets
 
-5. **Bel Ice** (Web App — E-commerce)
-   - Site e-commerce pour des produits de glace
-   - En ligne : belice.netlify.app
+- J'aime évaluer : application Flutter réalisée avec des chercheurs de l'UQAC pour la formation à l'évaluation en classe, avec contenus multimédias et suivi hors ligne. Disponible sur Google Play.
+- Espace Vases d'Honneur : plateforme de gestion des membres avec API Laravel et interface React/TypeScript.
+- Vases d'Honneur Chicoutimi : site vitrine construit avec Astro.
+- Pasteur Abraham Andebi : site personnel avec prédications, horaires, livre, balados et dons en ligne. Adresse : https://abrahamandebi.com/.
+- Tech Event : application Flutter qui répertorie les événements technologiques et utilise Firebase.
+- eHome : application mobile de vente et de location immobilière.
+- PayTicket : refonte UI/UX d'une application de réservation de billets d'événements. Disponible sur Google Play.
+- Hupe : application de réservation de billets d'autobus et de location de véhicules. Disponible sur Google Play.
+- Bel Ice : site de commerce en ligne, https://belice.netlify.app/.
+- FastSOS : application mobile pour joindre rapidement les services d'urgence.
+- Neurosity Crown Monitor : tableau de bord EEG temps réel et outils de relecture et d'analyse de séances.
 
-6. **FastSOS** (Mobile App — Flutter)
-   - Application de contact rapide avec les services d'urgence
+## Services
 
-## SERVICES PROPOSÉS
+- IA appliquée et apprentissage automatique : traitement des données, extraction de caractéristiques, comparaison et interprétation de modèles pour des projets de recherche.
+- Développement mobile : applications Flutter pour Android, intégration d'API, tests, mises en production et documentation technique.
+- Développement web : sites vitrines, applications de gestion, commerce en ligne, API et tableaux de bord temps réel.
+- Conception UI/UX : analyse des besoins, spécifications, parcours et interfaces web ou mobiles.
 
-1. **Recherche IA & Développement en Vision par Ordinateur**
-   - Solutions IA pour interpréter les états émotionnels et cognitifs humains
-   - Fusion de la recherche IA avancée avec le développement d'applications pratiques
+## Références
 
-2. **Développement Mobile** (Flutter)
-   - Applications cross-platform performantes
-   - Aide les entreprises à gagner en visibilité
+- Professeur Hamdi Ben Abdessalem, directeur de recherche C-PILOT, UQAC.
+- Professeur Claude Frasson, codirecteur de recherche C-PILOT, Université de Montréal.
+- Professeure Nicole Monney, projet de recherche eVADID, UQAC.
 
-3. **Développement Web**
-   - Sites vitrines, e-commerce, systèmes de gestion d'événements
+## Consignes de réponse
 
-4. **UI/UX Design**
-   - Interfaces utilisateur esthétiques pour mobile et web
-   - Focus sur l'expérience utilisateur
-
-## RÈGLES DE COMPORTEMENT
-
-- Réponds toujours de manière concise mais complète (2-4 phrases par point)
-- Si on te pose une question hors du contexte de Florent, redirige poliment vers le portfolio
-- Tu peux recommander de contacter Florent via le formulaire de contact, par email ou WhatsApp
-- Mets en valeur les points forts de Florent naturellement
-- Tu peux utiliser des emojis avec modération pour être chaleureux
-- Si tu ne connais pas une information spécifique sur Florent, dis-le honnêtement
-- Tu ne donnes JAMAIS d'informations fausses ou inventées
-- Formate tes réponses avec du texte simple, des listes quand c'est pertinent
-- Sois enthousiaste mais authentique quand tu parles des projets et compétences de Florent`;
+- Réponds en deux à quatre phrases, sauf si la personne demande les étapes ou l'architecture détaillée.
+- Réponds à propos du parcours, des projets et des services de Florent. Pour une autre question, explique brièvement que tu peux aider sur le portfolio et ses projets.
+- Oriente les personnes intéressées vers le formulaire de contact, le courriel ou WhatsApp.
+- Reste factuel. Si le CV ou ces notes ne donnent pas l'information, dis-le clairement et ne la devine pas.
+- N'affirme pas que Florent est CEO. Si la question porte sur le SEO du portfolio, comprends SEO au sens de référencement naturel.
+- Évite les slogans, les grands mots, les emojis et les caractères décoratifs. Utilise une ponctuation simple et un ton humain.`;
 
 /**
  * ChatBot Class
@@ -155,16 +122,60 @@ class GotfloChatBot {
       badge: null
     };
 
-    this.suggestions = [
-      { text: "Qui est Florent ?", icon: "bx-user" },
-      { text: "Quelles sont ses comp\u00e9tences ?", icon: "bx-code-alt" },
-      { text: "Montre-moi ses projets", icon: "bx-folder-open" },
-      { text: "Est-il disponible ?", icon: "bx-calendar-check" },
-      { text: "Comment le contacter ?", icon: "bx-envelope" },
-      { text: "What is his research about?", icon: "bx-brain" }
-    ];
+    this.language = document.documentElement.lang.startsWith('fr') ? 'fr' : 'en';
+    this.suggestions = this.getSuggestions();
 
     this.init();
+    window.addEventListener('portfolio:languagechange', event => {
+      this.updateLanguage(event.detail?.language || document.documentElement.lang);
+    });
+  }
+
+  uiCopy() {
+    return this.language === 'fr'
+      ? { open: 'Ouvrir l’assistant de Florent', title: 'Assistant de Florent', online: 'En ligne', clear: 'Effacer la conversation', close: 'Fermer', placeholder: 'Posez une question sur Florent...', send: 'Envoyer', powered: 'Assistant du portfolio' }
+      : { open: "Open Florent's assistant", title: "Florent's assistant", online: 'Online', clear: 'Clear conversation', close: 'Close', placeholder: 'Ask a question about Florent...', send: 'Send message', powered: 'Portfolio assistant' };
+  }
+
+  getSuggestions() {
+    return this.language === 'fr'
+      ? [
+          { text: 'Qui est Florent ?', icon: 'bx-user' },
+          { text: 'Quelles sont ses compétences ?', icon: 'bx-code-alt' },
+          { text: 'Quels sont ses projets ?', icon: 'bx-folder-open' },
+          { text: 'Parlez-moi de C-PILOT', icon: 'bx-brain' },
+          { text: 'Est-il disponible ?', icon: 'bx-calendar-check' },
+          { text: 'Comment le contacter ?', icon: 'bx-envelope' }
+        ]
+      : [
+          { text: 'Who is Florent?', icon: 'bx-user' },
+          { text: 'What are his skills?', icon: 'bx-code-alt' },
+          { text: 'What projects has he worked on?', icon: 'bx-folder-open' },
+          { text: 'Tell me about C-PILOT', icon: 'bx-brain' },
+          { text: 'Is he available?', icon: 'bx-calendar-check' },
+          { text: 'How can I contact him?', icon: 'bx-envelope' }
+        ];
+  }
+
+  updateLanguage(language) {
+    this.language = String(language).startsWith('fr') ? 'fr' : 'en';
+    const copy = this.uiCopy();
+    this.elements.bubble.setAttribute('aria-label', copy.open);
+    this.elements.panel.querySelector('.chatbot-header-text h4').textContent = copy.title;
+    this.elements.panel.querySelector('.chatbot-status').textContent = copy.online;
+    this.elements.clearBtn.setAttribute('aria-label', copy.clear);
+    this.elements.clearBtn.setAttribute('title', copy.clear);
+    this.elements.closeBtn.setAttribute('aria-label', copy.close);
+    this.elements.input.setAttribute('placeholder', copy.placeholder);
+    this.elements.sendBtn.setAttribute('aria-label', copy.send);
+    this.elements.panel.querySelector('.chatbot-powered').textContent = copy.powered;
+    this.suggestions = this.getSuggestions();
+    this.renderSuggestions();
+
+    if (!this.elements.messages.querySelector('.chatbot-msg-user')) {
+      this.elements.messages.innerHTML = '';
+      this.showWelcomeMessage();
+    }
   }
 
   /**
@@ -178,10 +189,11 @@ class GotfloChatBot {
   }
 
   createDOM() {
+    const copy = this.uiCopy();
     const chatHTML = `
     <div class="chatbot-container" id="chatbotContainer">
       <!-- Floating Bubble -->
-      <button class="chatbot-bubble" id="chatbotBubble" aria-label="Open AI Assistant">
+      <button class="chatbot-bubble" id="chatbotBubble" aria-label="${copy.open}">
         <i class="bx bx-bot chatbot-bubble-icon"></i>
         <i class="bx bx-x chatbot-bubble-close"></i>
         <span class="chatbot-badge" id="chatbotBadge">1</span>
@@ -198,15 +210,15 @@ class GotfloChatBot {
               <span class="chatbot-status-dot"></span>
             </div>
             <div class="chatbot-header-text">
-              <h4>Gotflo AI</h4>
-              <span class="chatbot-status">Online</span>
+              <h4>${copy.title}</h4>
+              <span class="chatbot-status">${copy.online}</span>
             </div>
           </div>
           <div class="chatbot-header-actions">
-            <button class="chatbot-action-btn" id="chatbotClear" aria-label="Clear chat" title="Clear conversation">
+            <button class="chatbot-action-btn" id="chatbotClear" aria-label="${copy.clear}" title="${copy.clear}">
               <i class="bx bx-trash"></i>
             </button>
-            <button class="chatbot-action-btn" id="chatbotClose" aria-label="Close chat">
+            <button class="chatbot-action-btn" id="chatbotClose" aria-label="${copy.close}">
               <i class="bx bx-x"></i>
             </button>
           </div>
@@ -238,15 +250,15 @@ class GotfloChatBot {
             <textarea
               id="chatbotInput"
               class="chatbot-input"
-              placeholder="Ask me anything about Florent..."
+              placeholder="${copy.placeholder}"
               rows="1"
               maxlength="500"
             ></textarea>
-            <button class="chatbot-send" id="chatbotSend" aria-label="Send message" disabled>
+            <button class="chatbot-send" id="chatbotSend" aria-label="${copy.send}" disabled>
               <i class="bx bx-send"></i>
             </button>
           </div>
-          <span class="chatbot-powered">Powered by Gemini AI</span>
+          <span class="chatbot-powered">${copy.powered}</span>
         </div>
       </div>
     </div>`;
@@ -295,7 +307,8 @@ class GotfloChatBot {
     // Close on outside click (mobile)
     document.addEventListener('click', (e) => {
       if (this.isOpen &&
-          !this.elements.container.contains(e.target)) {
+          !this.elements.container.contains(e.target) &&
+          !e.target.closest('#languageToggle')) {
         this.close();
       }
     });
@@ -361,9 +374,9 @@ class GotfloChatBot {
    * Show welcome message on first load
    */
   showWelcomeMessage() {
-    const welcomeMsg = `Salut ! Je suis l'assistant IA de **Florent**. Je connais tout son parcours, ses projets et ses comp\u00e9tences.
-
-Posez-moi vos questions ou utilisez les suggestions ci-dessous !`;
+    const welcomeMsg = this.language === 'fr'
+      ? `Bonjour, je suis l’assistant de **Florent**. Je peux vous renseigner sur son parcours, ses projets et ses services.\n\nPosez votre question ou choisissez une suggestion ci-dessous.`
+      : `Hello, I am **Florent's portfolio assistant**. I can answer questions about his experience, projects and services.\n\nAsk a question or choose one of the suggestions below.`;
 
     this.addMessage('bot', welcomeMsg);
   }
@@ -395,12 +408,18 @@ Posez-moi vos questions ou utilisez les suggestions ci-dessous !`;
       this.hideTyping();
       console.error('Gemini API Error:', error);
 
-      if (GEMINI_CONFIG.apiKey === 'YOUR_GEMINI_API_KEY') {
-        this.addMessage('bot', "L'API Gemini n'est pas encore configur\u00e9e. Veuillez ajouter votre cl\u00e9 API dans `chatbot.js`. En attendant, vous pouvez contacter Florent directement \u00e0 **komlagotlieb@gmail.com**");
+      if (GEMINI_CONFIG.apiKey === 'MISSING_API_KEY') {
+        this.addMessage('bot', this.language === 'fr'
+          ? "L’assistant n’est pas configuré pour répondre pour le moment. Vous pouvez contacter Florent à **komlagotlieb@gmail.com**."
+          : "The assistant is not configured to reply right now. You can contact Florent at **komlagotlieb@gmail.com**.");
       } else if (error.message?.includes('rate limit') || error.message?.includes('429') || error.message?.includes('quota')) {
-        this.addMessage('bot', "Je suis un peu sollicit\u00e9 en ce moment ! Veuillez r\u00e9essayer dans quelques secondes. En attendant, n'h\u00e9sitez pas \u00e0 explorer le portfolio ou contacter Florent via le **formulaire de contact** ci-dessous.");
+        this.addMessage('bot', this.language === 'fr'
+          ? "L’assistant reçoit beaucoup de demandes. Réessayez dans quelques secondes ou contactez Florent avec le formulaire ci-dessous."
+          : "The assistant is receiving many requests. Please try again in a few seconds or contact Florent using the form below.");
       } else {
-        this.addMessage('bot', "D\u00e9sol\u00e9, une erreur est survenue. Vous pouvez contacter Florent directement \u00e0 **komlagotlieb@gmail.com** ou via le formulaire de contact ci-dessous.");
+        this.addMessage('bot', this.language === 'fr'
+          ? "Une erreur est survenue. Vous pouvez contacter Florent à **komlagotlieb@gmail.com** ou avec le formulaire ci-dessous."
+          : "Something went wrong. You can contact Florent at **komlagotlieb@gmail.com** or use the form below.");
       }
     }
   }
@@ -450,7 +469,7 @@ Posez-moi vos questions ou utilisez les suggestions ci-dessous !`;
           });
 
           if (response.status === 429) {
-            // Rate limited — wait and retry
+            // Wait and retry after a rate limit response
             console.warn(`Rate limited on ${model} (attempt ${attempt + 1}/${GEMINI_CONFIG.maxRetries + 1}). Retrying in ${GEMINI_CONFIG.retryDelayMs}ms...`);
 
             if (attempt < GEMINI_CONFIG.maxRetries) {
@@ -462,7 +481,7 @@ Posez-moi vos questions ou utilisez les suggestions ci-dessous !`;
           }
 
           if (response.status === 404) {
-            // Model not found — skip to fallback model
+            // Skip a model that is not available and try the fallback
             console.warn(`Model ${model} not found (404). Trying next model...`);
             break;
           }
@@ -494,7 +513,7 @@ Posez-moi vos questions ou utilisez les suggestions ci-dessous !`;
           return aiText;
 
         } catch (error) {
-          // If it's not a rate limit or model-not-found, don't retry — throw immediately
+          // Retry only rate limit and unavailable-model errors
           if (!error.message?.includes('429') && !error.message?.includes('404')) {
             // Remove the user message we added since it failed
             this.conversationHistory.pop();

@@ -101,6 +101,8 @@
     </div>
   </button>
 
+  <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch to French" title="Switch to French">FR</button>
+
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
 
@@ -201,7 +203,7 @@
         <!-- Stats Bar -->
         <div class="stats-bar" data-aos="fade-up" data-aos-delay="200">
           <div class="stat-item">
-            <span class="stat-number" data-count="11">0</span>
+            <span class="stat-number" data-count="12">0</span>
             <span class="stat-label">Projects</span>
           </div>
           <div class="stat-item">
@@ -412,7 +414,7 @@
             </article>
             <article class="credential-card">
               <h4>Service Certificate</h4>
-              <p>CDEJ La Gr&acirc;ce &mdash; GesCDE activity management and planning software</p>
+              <p>CDEJ La Gr&acirc;ce: GesCDE, activity management and planning software</p>
             </article>
           </div>
         </div>
@@ -484,6 +486,21 @@
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
           <div class="col-lg-4 col-md-6 portfolio-item filter-ai">
             <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/cards/neurosity-monitor.jpg" class="img-fluid" alt="C-PILOT multimodal research platform" loading="lazy" width="1600" height="1000">
+              <div class="portfolio-info">
+                <h4>C-PILOT Research Platform</h4>
+                <p>A real-time research platform for synchronized sensor collection and pilot cognitive-state research. The architecture combines a Flask and Socket.IO dashboard, Lab Streaming Layer recording, signal-processing pipelines and research models.</p>
+                <div class="portfolio-links">
+                  <button class="portfolio-architecture-btn" type="button" data-bs-toggle="modal" data-bs-target="#cpilotArchitecture" aria-label="View C-PILOT platform and model architecture" title="View architecture">
+                    <i class="bx bx-sitemap" aria-hidden="true"></i><span class="visually-hidden">Architecture</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-ai">
+            <div class="portfolio-wrap">
               <img src="assets/img/portfolio/cards/neurosity-monitor.jpg" class="img-fluid" alt="Neurosity Crown Monitor" loading="lazy" width="1600" height="1000">
               <div class="portfolio-info">
                 <h4>Neurosity Crown Monitor</h4>
@@ -507,8 +524,8 @@
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/evadid.jpg" data-gallery="portfolioGallery"
                     class="portfolio-lightbox" title="Evadid"><i class="bx bx-plus"></i></a>
-                  <a href="https://play.google.com/store/apps/details?id=ca.jaimeevaluer.evadid" class="portfolio-details-lightbox"
-                    data-glightbox="type: external" title="View on Play Store"><i class="bx bxl-play-store"></i></a>
+                  <a href="https://play.google.com/store/apps/details?id=ca.jaimeevaluer.evadid" target="_blank" rel="noopener noreferrer"
+                    title="View Evadid on Google Play" aria-label="View Evadid on Google Play"><i class="bx bxl-play-store"></i></a>
                 </div>
               </div>
             </div>
@@ -601,8 +618,8 @@
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/payticket.png" data-gallery="portfolioGallery"
                     class="portfolio-lightbox" title="PayTicket"><i class="bx bx-plus"></i></a>
-                  <a href="https://play.google.com/store/apps/details?id=com.roserio.payticket" class="portfolio-details-lightbox"
-                    data-glightbox="type: external" title="View on Play Store"><i class="bx bx-link"></i></a>
+                  <a href="https://play.google.com/store/apps/details?id=com.roserio.payticket" target="_blank" rel="noopener noreferrer"
+                    title="View PayTicket on Google Play" aria-label="View PayTicket on Google Play"><i class="bx bxl-play-store"></i></a>
                 </div>
               </div>
             </div>
@@ -617,8 +634,8 @@
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/hupe.png" data-gallery="portfolioGallery"
                     class="portfolio-lightbox" title="Hupe"><i class="bx bx-plus"></i></a>
-                  <a href="https://play.google.com/store/apps/details?id=com.komaltech.hupe" class="portfolio-details-lightbox"
-                    data-glightbox="type: external" title="View on Play Store"><i class="bx bx-download"></i></a>
+                  <a href="https://play.google.com/store/apps/details?id=com.komaltech.hupe" target="_blank" rel="noopener noreferrer"
+                    title="View Hupe on Google Play" aria-label="View Hupe on Google Play"><i class="bx bxl-play-store"></i></a>
                 </div>
               </div>
             </div>
@@ -674,9 +691,8 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="service-box">
               <div class="icon"><i class="bx bx-brain"></i></div>
-              <h4>AI Research & Computer Vision Development</h4>
-              <p>I design AI-based solutions to interpret human emotional and cognitive states through computer vision
-                systems. My work merges advanced AI research with the development of practical applications.</p>
+              <h4>Applied AI and Machine Learning</h4>
+              <p>I build data-processing and machine-learning workflows for research projects. My C-PILOT work includes synchronized biosignals, feature extraction, model comparison and interpretation. Model results remain research estimates, with validation varying by target.</p>
             </div>
           </div>
 
@@ -685,8 +701,7 @@
             <div class="service-box">
               <div class="icon"><i class="bx bx-mobile-alt"></i></div>
               <h4>Mobile Development</h4>
-              <p>Building mobile apps helps businesses gain visibility and improve brand image. I create opportunities
-                for companies to showcase their activities and offer new services to customers.</p>
+              <p>I develop Flutter applications for Android, from implementation and API integration to testing, release and technical documentation. My experience includes educational, event and service applications.</p>
             </div>
           </div>
 
@@ -695,8 +710,7 @@
             <div class="service-box">
               <div class="icon"><i class="bx bx-code-alt"></i></div>
               <h4>Web Development</h4>
-              <p>No matter your business, you need to be present on the web. I create showcase sites, e-commerce
-                platforms, and event management systems tailored to your needs.</p>
+              <p>I build websites and web applications around the needs of each project, including showcase sites, e-commerce, management tools and real-time dashboards. My work covers front-end, back-end, API integration and deployment.</p>
             </div>
           </div>
 
@@ -704,8 +718,7 @@
             <div class="service-box">
               <div class="icon"><i class="bx bx-palette"></i></div>
               <h4>UI/UX Design</h4>
-              <p>Aesthetically designing user interfaces for mobile devices, websites, and other electronic devices,
-                focusing on user experience to create intuitive and engaging digital products.</p>
+              <p>I turn user needs into clear interface flows and practical specifications, then design mobile and web screens that are easy to understand and use.</p>
             </div>
           </div>
 
@@ -792,6 +805,51 @@
 
   </main>
 
+  <div class="modal fade" id="cpilotArchitecture" tabindex="-1" aria-labelledby="cpilotArchitectureLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content architecture-modal">
+        <div class="modal-header">
+          <div>
+            <p class="architecture-kicker">C-PILOT</p>
+            <h2 class="modal-title" id="cpilotArchitectureLabel">Platform and model architecture</h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="architecture-intro">The platform connects live sensor collection, synchronized recording and an offline research pipeline.</p>
+          <div class="cpilot-flow">
+            <article class="architecture-step">
+              <span class="architecture-number">01</span>
+              <h3>Data collection</h3>
+              <p>C-Pilot Collect uses Flask, Socket.IO, JavaScript and SQLite to manage sessions and show live signals. Inputs include X-Plane flight data, BMU network data, Neurosity Crown EEG, Polar ECG and PPG, a FLIR Lepton thermal camera and Gazepoint eye tracking.</p>
+            </article>
+            <article class="architecture-step">
+              <span class="architecture-number">02</span>
+              <h3>Live data flow</h3>
+              <p>Sensor workers send messages to an output queue and the central DataBus. One WebSocket publisher then streams updates through Socket.IO to the dashboard.</p>
+            </article>
+            <article class="architecture-step">
+              <span class="architecture-number">03</span>
+              <h3>Synchronization and storage</h3>
+              <p>In parallel, native Lab Streaming Layer streams use a shared clock and are recorded by LSLRecorder. SQLite stores session, participant and scenario metadata. Session recordings keep raw files and LSL data separately.</p>
+            </article>
+            <article class="architecture-step">
+              <span class="architecture-number">04</span>
+              <h3>Signal processing</h3>
+              <p>Offline processing checks and cleans the recordings, builds timelines at 1 Hz or 10 Hz, then extracts features in 30 or 60 second windows. HRV features use 300 second windows.</p>
+            </article>
+            <article class="architecture-step">
+              <span class="architecture-number">05</span>
+              <h3>Research models</h3>
+              <p>Model families studied include Ridge, Lasso, ElasticNet, SVR, Random Forest, LightGBM, XGBoost, CatBoost, 1D-CNN, TCN and GRU. Optuna supports tuning and SHAP supports interpretation.</p>
+              <p>Research targets include workload, focus, fatigue, vigilance, engagement and selected stress or calm indicators, alongside measures such as SDNN and MeanNN. Model coverage and validation vary by target; outputs are research estimates.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
@@ -828,6 +886,9 @@
 
   <!-- Configuration (API keys — ne pas committer) -->
   <script src="assets/js/config.js"></script>
+
+  <!-- Portfolio language switch -->
+  <script src="assets/js/i18n.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

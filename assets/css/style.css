@@ -1351,7 +1351,8 @@ section {
   gap: 12px;
 }
 
-.portfolio .portfolio-wrap .portfolio-links a {
+.portfolio .portfolio-wrap .portfolio-links a,
+.portfolio .portfolio-wrap .portfolio-links button {
   color: white;
   font-size: 24px;
   display: inline-flex;
@@ -1365,7 +1366,14 @@ section {
   transition: var(--transition-bounce);
 }
 
-.portfolio .portfolio-wrap .portfolio-links a:hover {
+.portfolio .portfolio-wrap .portfolio-links button {
+  padding: 0;
+  color: var(--text-white);
+  cursor: pointer;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a:hover,
+.portfolio .portfolio-wrap .portfolio-links button:hover {
   background: var(--primary-color);
   border-color: var(--primary-color);
   transform: scale(1.15);
@@ -2380,6 +2388,207 @@ section {
   padding: 0;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+.language-toggle {
+  position: fixed;
+  top: 19px;
+  right: 152px;
+  z-index: 9999;
+  min-width: 42px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--border-glass);
+  border-radius: 18px;
+  background: var(--bg-glass-strong);
+  color: var(--text-white);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font: 600 12px 'Inter', sans-serif;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.language-toggle:hover,
+.language-toggle:focus-visible {
+  border-color: var(--primary-light);
+  color: var(--primary-light);
+  box-shadow: var(--shadow-glow);
+}
+
+@media (max-width: 991px) {
+  .language-toggle {
+    top: 21px;
+    right: 138px;
+  }
+}
+
+@media (max-width: 360px) {
+  .language-toggle {
+    right: 130px;
+  }
+}
+
+[data-theme="light"] .language-toggle {
+  color: var(--text-dark);
+}
+
+/* On touch screens, keep project descriptions and links visible without hover. */
+@media (hover: none), (pointer: coarse), (max-width: 767px) {
+  .portfolio .portfolio-wrap,
+  .portfolio .portfolio-wrap:hover {
+    transform: none;
+    overflow: hidden;
+    background: var(--bg-glass-strong);
+  }
+
+  .portfolio .portfolio-wrap:hover img {
+    transform: none;
+    filter: none;
+  }
+
+  .portfolio .portfolio-wrap .portfolio-info {
+    position: static;
+    opacity: 1;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 18px 16px 20px;
+    overflow: visible;
+  }
+
+  .portfolio .portfolio-wrap .portfolio-info p {
+    display: block;
+    overflow: visible;
+    padding: 0;
+    margin-bottom: 16px;
+  }
+}
+
+/* C-PILOT architecture modal */
+.architecture-modal {
+  color: var(--text-light);
+  background: var(--bg-dark);
+  border: 1px solid var(--border-glass-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glow-strong);
+}
+
+.architecture-modal .modal-header {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border-glass);
+  padding: 22px 26px;
+}
+
+.architecture-modal .modal-title {
+  margin: 0;
+  color: var(--text-white);
+  font: 700 clamp(1.25rem, 3vw, 1.75rem) 'Poppins', sans-serif;
+}
+
+.architecture-modal .btn-close {
+  filter: invert(1);
+}
+
+body.modal-open .theme-toggle,
+body.modal-open .language-toggle,
+body.modal-open .mobile-nav-toggle,
+body.modal-open .chatbot-container,
+body.modal-open .back-to-top {
+  visibility: hidden;
+}
+
+.architecture-modal .modal-body {
+  padding: 24px 26px 28px;
+}
+
+.architecture-kicker {
+  margin: 0 0 5px;
+  color: var(--primary-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.architecture-intro {
+  max-width: 760px;
+  margin-bottom: 22px;
+  color: var(--text-light);
+}
+
+.cpilot-flow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.architecture-step {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  background: var(--bg-glass);
+}
+
+.architecture-step:last-child {
+  grid-column: 1 / -1;
+}
+
+.architecture-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.architecture-step h3 {
+  margin: 0 0 8px;
+  color: var(--text-white);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.architecture-step p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.architecture-step p + p {
+  margin-top: 12px;
+}
+
+[data-theme="light"] .architecture-modal {
+  background: #fff;
+}
+
+[data-theme="light"] .architecture-modal .btn-close {
+  filter: none;
+}
+
+@media (max-width: 575px) {
+  .cpilot-flow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .architecture-step:last-child {
+    grid-column: auto;
+  }
+
+  .architecture-modal .modal-header,
+  .architecture-modal .modal-body {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
 }
 
 @media (max-width: 991px) {

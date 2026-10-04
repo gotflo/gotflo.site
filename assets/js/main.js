@@ -162,15 +162,20 @@
    */
   const typed = select('.typed')
   if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 50,
-      backSpeed: 30,
-      backDelay: 2000
-    });
+    let heroTyped;
+    const startTypedEffect = () => {
+      heroTyped?.destroy();
+      typed.textContent = '';
+      heroTyped = new Typed('.typed', {
+        strings: typed.getAttribute('data-typed-items').split(',').map(item => item.trim()),
+        loop: true,
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000
+      });
+    };
+    startTypedEffect();
+    window.addEventListener('portfolio:languagechange', startTypedEffect);
   }
 
   /**
@@ -291,7 +296,7 @@
   // Initialize EmailJS
   if (typeof emailjs !== 'undefined') {
     emailjs.init(EMAILJS_CONFIG.publicKey);
-    console.log('✅ EmailJS initialized');
+    console.log('EmailJS initialized');
   }
 
   /**
@@ -299,6 +304,8 @@
    */
   const contactForm = select('#contact-form');
   if (contactForm) {
+    const isFrench = () => document.documentElement.lang.startsWith('fr');
+    const copy = (english, french) => isFrench() ? french : english;
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -325,23 +332,23 @@
       let isValid = true;
 
       if (nameInput.value.trim().length < 2) {
-        showError(nameInput, 'Please enter a valid name (at least 2 characters)');
+        showError(nameInput, copy('Please enter a valid name (at least 2 characters)', 'Veuillez saisir un nom valide (au moins 2 caractères).'));
         isValid = false;
       }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(emailInput.value.trim())) {
-        showError(emailInput, 'Please enter a valid email address');
+        showError(emailInput, copy('Please enter a valid email address', 'Veuillez saisir une adresse courriel valide.'));
         isValid = false;
       }
 
       if (subjectInput.value.trim().length < 3) {
-        showError(subjectInput, 'Please enter a subject (at least 3 characters)');
+        showError(subjectInput, copy('Please enter a subject (at least 3 characters)', 'Veuillez saisir un sujet (au moins 3 caractères).'));
         isValid = false;
       }
 
       if (messageInput.value.trim().length < 10) {
-        showError(messageInput, 'Please enter a message (at least 10 characters)');
+        showError(messageInput, copy('Please enter a message (at least 10 characters)', 'Veuillez saisir un message (au moins 10 caractères).'));
         isValid = false;
       }
 
@@ -350,14 +357,14 @@
       // Check if EmailJS is configured
       if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
         errorResponse.style.display = 'block';
-        errorResponse.textContent = '⚠️ EmailJS is not configured yet. Please update the API keys in main.js';
+        errorResponse.textContent = copy('Email delivery is not configured. Please contact me by email or WhatsApp.', 'L’envoi de courriel n’est pas configuré. Vous pouvez me joindre par courriel ou WhatsApp.');
         return;
       }
 
       // Show loading & disable button
       loading.style.display = 'block';
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
+      submitBtn.textContent = copy('Sending...', 'Envoi en cours...');
 
       // Prepare template parameters
       const templateParams = {
@@ -374,7 +381,7 @@
           sentMessage.style.display = 'block';
           contactForm.reset();
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
+          submitBtn.textContent = copy('Send Message', 'Envoyer le message');
 
           setTimeout(() => {
             sentMessage.style.display = 'none';
@@ -383,18 +390,18 @@
         .catch((error) => {
           loading.style.display = 'none';
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
+          submitBtn.textContent = copy('Send Message', 'Envoyer le message');
           errorResponse.style.display = 'block';
 
           // User-friendly error messages
           if (error.status === 412) {
-            errorResponse.textContent = 'EmailJS configuration error. Please check your Service ID and Template ID.';
+            errorResponse.textContent = copy('Email delivery configuration error. Please try again later.', 'Erreur de configuration de l’envoi. Veuillez réessayer plus tard.');
           } else if (error.status === 422) {
-            errorResponse.textContent = 'Invalid email template parameters. Please check your template setup.';
+            errorResponse.textContent = copy('The contact form could not send these details. Please review the form and try again.', 'Le formulaire n’a pas pu envoyer ces renseignements. Vérifiez les champs et réessayez.');
           } else if (error.status === 429) {
-            errorResponse.textContent = 'Too many requests. Please wait a moment and try again.';
+            errorResponse.textContent = copy('Too many requests. Please wait a moment and try again.', 'Il y a trop de demandes. Attendez un instant avant de réessayer.');
           } else {
-            errorResponse.textContent = 'Failed to send message. Please try again or contact me directly at komlagotlieb@gmail.com';
+            errorResponse.textContent = copy('The message could not be sent. Please try again or email me at komlagotlieb@gmail.com.', 'Le message n’a pas pu être envoyé. Réessayez ou écrivez-moi à komlagotlieb@gmail.com.');
           }
 
           setTimeout(() => {
