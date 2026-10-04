@@ -223,6 +223,25 @@
         layoutMode: 'fitRows'
       });
 
+      portfolioContainer.addEventListener('load', event => {
+        if (event.target?.tagName === 'IMG') {
+          requestAnimationFrame(() => portfolioIsotope.layout());
+        }
+      }, true);
+
+      portfolioIsotope.on('arrangeComplete', () => {
+        requestAnimationFrame(() => {
+          portfolioIsotope.layout();
+          AOS.refresh();
+        });
+      });
+
+      let portfolioResizeFrame;
+      window.addEventListener('resize', () => {
+        cancelAnimationFrame(portfolioResizeFrame);
+        portfolioResizeFrame = requestAnimationFrame(() => portfolioIsotope.layout());
+      }, { passive: true });
+
       let portfolioFilters = select('#portfolio-flters li', true);
 
       on('click', '#portfolio-flters li', function(e) {
@@ -234,9 +253,6 @@
 
         portfolioIsotope.arrange({
           filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
         });
       }, true);
     }

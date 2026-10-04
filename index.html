@@ -483,7 +483,7 @@
           </div>
         </div>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+        <div class="row g-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
           <div class="col-lg-4 col-md-6 portfolio-item filter-ai">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/cards/neurosity-monitor.jpg" class="img-fluid" alt="C-PILOT multimodal research platform" loading="lazy" width="1600" height="1000">
@@ -817,6 +817,84 @@
         </div>
         <div class="modal-body">
           <p class="architecture-intro">The platform connects live sensor collection, synchronized recording and an offline research pipeline.</p>
+          <figure class="cpilot-diagram" aria-labelledby="cpilotDiagramTitle">
+            <figcaption class="cpilot-diagram-heading">
+              <p class="architecture-kicker">System map</p>
+              <h3 id="cpilotDiagramTitle">From synchronized sensors to research estimates</h3>
+              <p>One collection layer serves two parallel data paths, followed by offline analysis.</p>
+            </figcaption>
+
+            <section class="architecture-inputs" aria-labelledby="cpilotInputsTitle">
+              <h4 id="cpilotInputsTitle" class="architecture-section-label">Data sources</h4>
+              <div class="architecture-source-grid">
+                <div class="architecture-source"><strong>Flight context</strong><span>X-Plane, BMU</span></div>
+                <div class="architecture-source"><strong>Brain signals</strong><span>Neurosity Crown, EEG</span></div>
+                <div class="architecture-source"><strong>Cardiac signals</strong><span>Polar, ECG and PPG</span></div>
+                <div class="architecture-source"><strong>Eye tracking</strong><span>Gazepoint</span></div>
+                <div class="architecture-source"><strong>Thermal imaging</strong><span>FLIR Lepton</span></div>
+              </div>
+            </section>
+
+            <div class="architecture-connector" aria-hidden="true"></div>
+
+            <section class="architecture-collection" aria-labelledby="cpilotCollectionTitle">
+              <span class="architecture-node-label">Collection layer</span>
+              <h4 id="cpilotCollectionTitle">C-Pilot Collect</h4>
+              <p>Flask, JavaScript, Socket.IO, session control</p>
+            </section>
+
+            <div class="architecture-branch-label"><span>Two parallel routes</span></div>
+
+            <div class="architecture-routes">
+              <section class="architecture-lane architecture-lane-live" aria-labelledby="cpilotLiveTitle">
+                <div class="architecture-lane-heading">
+                  <span class="architecture-lane-index">01</span>
+                  <div><p class="architecture-node-label">Live path</p><h4 id="cpilotLiveTitle">Dashboard updates</h4></div>
+                </div>
+                <div class="architecture-lane-flow architecture-lane-flow-5">
+                  <div class="architecture-node"><strong>Sensor workers</strong><span>Read incoming data</span></div>
+                  <div class="architecture-node"><strong>output_queue</strong><span>Passes messages</span></div>
+                  <div class="architecture-node"><strong>DataBus</strong><span>Central dispatch</span></div>
+                  <div class="architecture-node"><strong>WebSocketPublisher</strong><span>Single publisher</span></div>
+                  <div class="architecture-node"><strong>Socket.IO</strong><span>Live dashboard</span></div>
+                </div>
+              </section>
+
+              <section class="architecture-lane architecture-lane-recording" aria-labelledby="cpilotRecordingTitle">
+                <div class="architecture-lane-heading">
+                  <span class="architecture-lane-index">02</span>
+                  <div><p class="architecture-node-label">Synchronized path</p><h4 id="cpilotRecordingTitle">Session recording</h4></div>
+                </div>
+                <div class="architecture-lane-flow architecture-lane-flow-4">
+                  <div class="architecture-node"><strong>Native LSL streams</strong><span>Sensor data streams</span></div>
+                  <div class="architecture-node"><strong>Shared clock</strong><span>Aligns timestamps</span></div>
+                  <div class="architecture-node"><strong>LSLRecorder</strong><span>Records each session</span></div>
+                  <div class="architecture-node"><strong>Session storage</strong><span>Raw files, LSL data, SQLite metadata</span></div>
+                </div>
+              </section>
+            </div>
+
+            <div class="architecture-connector architecture-connector-labeled" aria-hidden="true"><span>Recorded sessions</span></div>
+
+            <section class="architecture-offline" aria-labelledby="cpilotOfflineTitle">
+              <div class="architecture-lane-heading">
+                <span class="architecture-lane-index">03</span>
+                <div><p class="architecture-node-label">Offline research</p><h4 id="cpilotOfflineTitle">Signal processing and model analysis</h4></div>
+              </div>
+              <div class="architecture-lane-flow architecture-lane-flow-6">
+                <div class="architecture-node"><strong>Session data</strong><span>Recorded signals</span></div>
+                <div class="architecture-node"><strong>Quality checks</strong><span>Validate and clean</span></div>
+                <div class="architecture-node"><strong>Timelines</strong><span>1 Hz or 10 Hz</span></div>
+                <div class="architecture-node"><strong>Features</strong><span>30 s and 60 s; HRV 300 s</span></div>
+                <div class="architecture-node"><strong>Model analysis</strong><span>Compare, tune and interpret</span></div>
+                <div class="architecture-node"><strong>Research estimates</strong><span>Workload, focus, fatigue and more</span></div>
+              </div>
+            </section>
+
+            <p class="architecture-diagram-note">Model coverage and validation vary by target. Outputs are research estimates.</p>
+          </figure>
+
+          <h3 class="architecture-details-title">Architecture details</h3>
           <div class="cpilot-flow">
             <article class="architecture-step">
               <span class="architecture-number">01</span>

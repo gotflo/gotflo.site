@@ -1268,6 +1268,11 @@ section {
   }
 }
 
+.portfolio .portfolio-container {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 1.5rem;
+}
+
 .portfolio .portfolio-wrap {
   transition: var(--transition-bounce);
   position: relative;
@@ -2517,6 +2522,279 @@ body.modal-open .back-to-top {
   color: var(--text-light);
 }
 
+.cpilot-diagram {
+  --diagram-live: #22d3ee;
+  --diagram-recording: #a78bfa;
+  --diagram-research: #34d399;
+  margin: 0 0 26px;
+  padding: clamp(16px, 2.5vw, 28px);
+  overflow: hidden;
+  border: 1px solid var(--border-glass-strong);
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, rgba(34, 211, 238, 0.07), rgba(124, 58, 237, 0.08) 52%, rgba(52, 211, 153, 0.05));
+}
+
+.cpilot-diagram-heading {
+  margin-bottom: 23px;
+}
+
+.cpilot-diagram-heading h3 {
+  margin: 0 0 7px;
+  color: var(--text-white);
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  font-weight: 700;
+}
+
+.cpilot-diagram-heading > p:last-child,
+.architecture-diagram-note {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+.architecture-section-label,
+.architecture-node-label {
+  color: var(--text-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.architecture-section-label {
+  margin: 0 0 10px;
+}
+
+.architecture-source-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.architecture-source,
+.architecture-node {
+  min-width: 0;
+  border: 1px solid var(--border-glass);
+  border-radius: 10px;
+  background: rgba(15, 11, 26, 0.55);
+}
+
+.architecture-source {
+  display: flex;
+  min-height: 68px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px;
+  border-top: 2px solid var(--primary-light);
+}
+
+.architecture-source strong,
+.architecture-node strong {
+  color: var(--text-white);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.architecture-source span,
+.architecture-node span {
+  color: var(--text-light);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.architecture-connector {
+  position: relative;
+  width: 1px;
+  height: 26px;
+  margin: 0 auto;
+  background: var(--border-glass-strong);
+}
+
+.architecture-connector::after {
+  position: absolute;
+  bottom: 0;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid var(--text-light);
+  border-bottom: 1px solid var(--text-light);
+  content: '';
+  transform: rotate(45deg);
+}
+
+.architecture-collection {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  border: 1px solid rgba(167, 139, 250, 0.55);
+  border-radius: 12px;
+  background: linear-gradient(120deg, rgba(124, 58, 237, 0.22), rgba(6, 182, 212, 0.12));
+  text-align: center;
+}
+
+.architecture-collection h4,
+.architecture-lane-heading h4 {
+  margin: 3px 0 0;
+  color: var(--text-white);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.architecture-collection p {
+  margin: 4px 0 0;
+  color: var(--text-light);
+  font-size: 0.78rem;
+}
+
+.architecture-branch-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 10px;
+  color: var(--text-light);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.architecture-branch-label::before,
+.architecture-branch-label::after {
+  height: 1px;
+  flex: 1;
+  background: var(--border-glass-strong);
+  content: '';
+}
+
+.architecture-routes {
+  display: grid;
+  gap: 10px;
+}
+
+.architecture-lane,
+.architecture-offline {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--border-glass);
+  border-left: 3px solid var(--diagram-live);
+  border-radius: 12px;
+  background: rgba(15, 11, 26, 0.38);
+}
+
+.architecture-lane-recording {
+  border-left-color: var(--diagram-recording);
+}
+
+.architecture-lane-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.architecture-lane-index {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-glass-strong);
+  border-radius: 50%;
+  color: var(--text-white);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.architecture-lane-flow {
+  display: grid;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.architecture-lane-flow-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.architecture-lane-flow-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.architecture-lane-flow-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+.architecture-node {
+  position: relative;
+  display: flex;
+  min-height: 66px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 9px;
+}
+
+.architecture-lane-live .architecture-node { border-top: 2px solid rgba(34, 211, 238, 0.72); }
+.architecture-lane-recording .architecture-node { border-top: 2px solid rgba(167, 139, 250, 0.72); }
+.architecture-offline { border-left-color: var(--diagram-research); }
+.architecture-offline .architecture-node { border-top: 2px solid rgba(52, 211, 153, 0.72); }
+
+.architecture-lane-flow:not(.architecture-lane-flow-6) .architecture-node:not(:last-child)::after,
+.architecture-lane-flow-6 .architecture-node:not(:last-child)::after {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - 4px);
+  right: -6px;
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid var(--text-light);
+  border-right: 1px solid var(--text-light);
+  background: var(--bg-dark);
+  content: '';
+  transform: rotate(45deg);
+}
+
+.architecture-connector-labeled {
+  display: flex;
+  width: 100%;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: none;
+}
+
+.architecture-connector-labeled::before {
+  position: absolute;
+  top: 0;
+  bottom: 13px;
+  width: 1px;
+  background: var(--diagram-recording);
+  content: '';
+}
+
+.architecture-connector-labeled::after {
+  bottom: 10px;
+  border-color: var(--diagram-recording);
+}
+
+.architecture-connector-labeled span {
+  position: absolute;
+  top: 16px;
+  padding: 0 9px;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-size: 0.7rem;
+}
+
+.architecture-diagram-note {
+  margin-top: 12px;
+  font-size: 0.75rem;
+}
+
+.architecture-details-title {
+  margin: 0 0 12px;
+  color: var(--text-white);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
 .cpilot-flow {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2575,7 +2853,70 @@ body.modal-open .back-to-top {
   filter: none;
 }
 
+[data-theme="light"] .architecture-modal .modal-title,
+[data-theme="light"] .architecture-modal .cpilot-diagram-heading h3,
+[data-theme="light"] .architecture-modal .architecture-collection h4,
+[data-theme="light"] .architecture-modal .architecture-lane-heading h4,
+[data-theme="light"] .architecture-modal .architecture-details-title,
+[data-theme="light"] .architecture-modal .architecture-step h3 {
+  color: var(--text-dark);
+}
+
+[data-theme="light"] .cpilot-diagram {
+  background: linear-gradient(145deg, #f0f9ff, #f5f3ff 52%, #ecfdf5);
+}
+
+[data-theme="light"] .architecture-source,
+[data-theme="light"] .architecture-node,
+[data-theme="light"] .architecture-lane,
+[data-theme="light"] .architecture-offline {
+  border-color: rgba(100, 116, 139, 0.2);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+[data-theme="light"] .architecture-source strong,
+[data-theme="light"] .architecture-node strong {
+  color: var(--text-dark);
+}
+
+[data-theme="light"] .architecture-collection {
+  background: linear-gradient(120deg, rgba(124, 58, 237, 0.12), rgba(6, 182, 212, 0.1));
+}
+
+[data-theme="light"] .architecture-connector-labeled span {
+  background: #f5f3ff;
+}
+
+[data-theme="light"] .architecture-step {
+  background: rgba(148, 163, 184, 0.08);
+}
+
+@media (max-width: 991px) {
+  .architecture-source-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .architecture-lane-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .architecture-lane-flow .architecture-node:not(:last-child)::after { display: none; }
+
+  .architecture-lane-flow .architecture-node::before {
+    display: inline-flex;
+    width: 19px;
+    height: 19px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-glass-strong);
+    border-radius: 50%;
+    color: var(--text-light);
+    content: counter(architecture-step);
+    font-size: 0.62rem;
+    font-weight: 700;
+  }
+
+  .architecture-lane-flow { counter-reset: architecture-step; }
+  .architecture-lane-flow .architecture-node { counter-increment: architecture-step; }
+}
+
 @media (max-width: 575px) {
+  .architecture-source-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
   .cpilot-flow {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -2589,6 +2930,17 @@ body.modal-open .back-to-top {
     padding-left: 18px;
     padding-right: 18px;
   }
+
+  .architecture-diagram-heading { margin-bottom: 17px; }
+  .architecture-source { min-height: 62px; }
+  .architecture-lane,
+  .architecture-offline { padding: 11px; }
+  .architecture-node { min-height: 74px; padding: 8px; }
+}
+
+@media (max-width: 360px) {
+  .architecture-source-grid,
+  .architecture-lane-flow { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 991px) {
