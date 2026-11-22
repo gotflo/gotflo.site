@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://gotflo.site/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-ca" href="https://gotflo.site/"/>
+    <xhtml:link rel="alternate" hreflang="fr-ca" href="https://gotflo.site/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gotflo.site/"/>
+    <image:image>
+      <image:loc>https://gotflo.site/assets/img/portfolio/cpilot-collect.jpg</image:loc>
+      <image:title>C-Pilot Collect, real-time sensor collection</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gotflo.site/assets/img/portfolio/neurosity-monitor.jpg</image:loc>
+      <image:title>Neurosity Crown Monitor, live EEG session</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gotflo.site/assets/img/portfolio/evh-platform.jpg</image:loc>
+      <image:title>Espace Vases d'Honneur, member dashboard</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gotflo.site/assets/img/portfolio/evadid.jpg</image:loc>
+      <image:title>J'aime evaluer, mobile application</image:title>
+    </image:image>
   </url>
 </urlset>

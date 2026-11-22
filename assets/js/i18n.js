@@ -57,7 +57,8 @@
     'Nov 2025 – Present': 'novembre 2025 - aujourd’hui',
     'Developed the Flutter application': 'Développement de l’application Flutter',
     'to help teachers master classroom assessment.': 'pour aider le personnel enseignant à maîtriser l’évaluation en classe.',
-    'Integrated and corrected the mobile API, carried out tests and production releases, and prepared technical reports and documentation.': 'Intégration et correction de l’API mobile, tests, mises en production et rédaction de rapports et de documentation technique.',
+    'Integrated and corrected the mobile API, ran the tests and published the application on the App Store and Google Play in September 2026.': 'Intégration et correction de l’API mobile, tests et publication de l’application sur l’App Store et Google Play en septembre 2026.',
+    'Prepared the technical reports and the documentation for the research team.': 'Rédaction des rapports techniques et de la documentation pour l’équipe de recherche.',
     'Mobile Developer & UI/UX Designer': 'Développeur mobile et concepteur UI/UX',
     'Jun 2022 – Dec 2023': 'juin 2022 - décembre 2023',
     'Wrote, updated and tested code in the Android environment and maintained existing applications.': 'Écriture, mise à jour et test de code pour Android, ainsi que maintenance d’applications existantes.',
@@ -105,24 +106,25 @@
     'A real-time research platform for synchronized sensor collection and pilot cognitive-state research. The architecture combines a Flask and Socket.IO dashboard, Lab Streaming Layer recording, signal-processing pipelines and research models.': 'Une plateforme de recherche en temps réel pour collecter des données synchronisées et étudier l’état cognitif des pilotes. Elle réunit un tableau de bord Flask et Socket.IO, l’enregistrement avec Lab Streaming Layer, le traitement des signaux et des modèles de recherche.',
     'Neurosity Crown Monitor': 'Moniteur Neurosity Crown',
     'Real-time EEG monitoring for the Neurosity Crown headset: live calm, focus and brainwave charts over WebSocket, CSV session recording and an analysis viewer with temporal replay. Flask and Socket.IO, bilingual FR/EN.': 'Suivi EEG en temps réel avec le casque Neurosity Crown : affichage des mesures de calme, de concentration et des ondes cérébrales par WebSocket, enregistrement CSV et lecteur d’analyse avec relecture temporelle. Application bilingue en Flask et Socket.IO.',
-    'Evadid': 'Evadid',
-    'J’aime évaluer: a Flutter app built with UQAC researchers to help teachers master classroom assessment. Videos, podcasts and infographics across six themes, with offline progress tracking. On Google Play.': 'J’aime évaluer est une application Flutter développée avec des chercheurs de l’UQAC pour aider le personnel enseignant à maîtriser l’évaluation en classe. Elle propose des vidéos, balados et infographies sur six thèmes, avec suivi hors ligne de la progression. Disponible sur Google Play.',
+    'J’aime évaluer': 'J’aime évaluer',
+    'A free Flutter application built with the eVADID research team at UQAC to help teachers master classroom assessment. Videos, podcasts and infographics across six themes, with progress kept on the device. Published in September 2026 on the App Store and Google Play.': 'Application Flutter gratuite réalisée avec l’équipe de recherche eVADID de l’UQAC pour aider le personnel enseignant à maîtriser l’évaluation en classe. Vidéos, balados et infographies sur six thèmes, avec la progression conservée sur l’appareil. Publiée en septembre 2026 sur l’App Store et Google Play.',
     'Church member platform: SMS one-time-code sign-in, custom roles and permissions, role-based dashboards, spiritual follow-up, attendance sheets and assigned exercises. Laravel API with a React and TypeScript front end.': 'Plateforme destinée aux membres d’une église : connexion par code SMS, rôles et permissions, tableaux de bord adaptés, suivi pastoral, feuilles de présence et exercices. API Laravel et interface React avec TypeScript.',
     'Showcase website for the church, built with Astro as a static site: live YouTube service feed, photo gallery, tribe directory and PayPal donations.': 'Site vitrine de l’église réalisé avec Astro : diffusion des cultes YouTube, galerie photo, répertoire des tribus et dons par PayPal.',
     'Personal website for a pastor and author: sermons, service schedule, book and podcasts, plus an online donation page. Hand-coded static site with a Sharp-based image optimisation pipeline.': 'Site personnel d’un pasteur et auteur : prédications, horaires des cultes, livre, balados et dons en ligne. Site statique développé sur mesure avec un processus d’optimisation des images.',
     'Tech Event': 'Tech Event',
-    'A mobile application developed using Flutter technology, directly interacting with a Flutter database. The primary objective is to provide a centralized platform where users can easily access a comprehensive list of planned technological events throughout the year.': 'Application mobile Flutter qui présente une liste centralisée des événements technologiques prévus pendant l’année et échange avec une base de données Firebase.',
+    'A Flutter application that gathers the technology events planned for the year in one place. The list is kept in Firebase, so it can be updated without republishing the application.': 'Application Flutter qui réunit au même endroit les événements technologiques prévus dans l’année. La liste est conservée dans Firebase, ce qui permet de la mettre à jour sans republier l’application.',
+    'View details': 'Voir le détail',
     'Download': 'Télécharger',
     'eHome': 'eHome',
-    'An application to sell or rent property': 'Application de vente et de location immobilière',
+    'A mobile application for selling and renting property, with listings, photos and a direct line to the person offering the place.': 'Application mobile de vente et de location immobilière, avec les annonces, les photos et une mise en relation directe avec la personne qui propose le bien.',
     'PayTicket': 'PayTicket',
-    'Redesigned the PayTicket event ticket booking application': 'Refonte de l’interface de réservation de billets d’événements PayTicket',
+    'A redesign of the PayTicket event ticket booking application, from finding an event to holding the ticket.': 'Refonte de l’application de réservation de billets d’événements PayTicket, de la recherche d’un événement jusqu’au billet en main.',
     'Hupe': 'Hupe',
-    'A bus ticket reservation and vehicle rental application': 'Application de réservation de billets d’autobus et de location de véhicules',
+    'An application for booking bus tickets and renting vehicles, published on Google Play.': 'Application de réservation de billets d’autobus et de location de véhicules, publiée sur Google Play.',
     'Bel Ice': 'Bel Ice',
-    'E-commerce website for ice cream products': 'Site de commerce en ligne de produits glacés',
+    'An online shop for ice cream products, with the catalogue, the cart and the order flow.': 'Boutique en ligne de produits glacés, avec le catalogue, le panier et le parcours de commande.',
     'FastSOS': 'FastSOS',
-    'An application that allows quick contact with emergency services': 'Application permettant de joindre rapidement les services d’urgence',
+    'An application that puts the emergency services one tap away, with the right number for the situation and the caller\'s location ready to share.': 'Application qui met les services d’urgence à une touche, avec le bon numéro selon la situation et la position de la personne prête à être transmise.',
     'What I Can Do For You': 'Mes services',
     'Architecture': 'Architecture',
     'Applied AI and Machine Learning': 'IA appliquée et apprentissage automatique',
@@ -207,7 +209,19 @@
     alt: {
       'Florent Gotliebe': 'Florent Gotliebe',
       'Université du Québec à Chicoutimi': 'Université du Québec à Chicoutimi',
-      'C-PILOT multimodal research platform': 'Plateforme de recherche multimodale C-PILOT'
+      'C-PILOT multimodal research platform': 'Plateforme de recherche multimodale C-PILOT',
+      'C-Pilot Collect overview with the five sensors streaming': 'Vue d’ensemble de C-Pilot Collect avec les cinq capteurs en diffusion',
+      'Neurosity Crown Monitor showing the eight raw EEG channels': 'Moniteur Neurosity Crown affichant les huit voies EEG brutes',
+      'J’aime evaluer mobile application': 'Application mobile J’aime évaluer',
+      'Espace Vases d’Honneur member dashboard': 'Tableau de bord d’un membre de l’Espace Vases d’Honneur',
+      'Vases d’Honneur Chicoutimi website': 'Site web Vases d’Honneur Chicoutimi',
+      'Pastor Abraham Andebi personal website': 'Site personnel du pasteur Abraham Andebi',
+      'Tech Event mobile application': 'Application mobile Tech Event',
+      'eHome property application': 'Application immobilière eHome',
+      'PayTicket booking screens': 'Écrans de réservation PayTicket',
+      'Hupe bus ticket application': 'Application de billets d’autobus Hupe',
+      'Bel Ice online shop': 'Boutique en ligne Bel Ice',
+      'FastSOS emergency application': 'Application d’urgence FastSOS'
     },
     title: {
       'Toggle theme': 'Changer de thème',
@@ -215,21 +229,31 @@
       'View architecture': 'Voir l’architecture',
       'View C-PILOT platform and model architecture': 'Voir l’architecture de la plateforme et des modèles C-PILOT',
       'View on GitHub': 'Voir sur GitHub',
-      'View Evadid on Google Play': 'Voir Evadid sur Google Play',
-      'View PayTicket on Google Play': 'Voir PayTicket sur Google Play',
-      'View Hupe on Google Play': 'Voir Hupe sur Google Play',
-      'Visit Website': 'Visiter le site web',
+      'View on the App Store': 'Voir sur l’App Store',
+      'View on Google Play': 'Voir sur Google Play',
       'Visit the website': 'Visiter le site web',
-      'Download': 'Télécharger'
+      'Download the APK': 'Télécharger l’APK',
+      'Previous project': 'Projet précédent',
+      'Next project': 'Projet suivant'
     },
     'aria-label': {
       'Toggle theme': 'Changer de thème',
       'Close': 'Fermer',
+      'Filter the projects': 'Filtrer les projets',
       'View C-PILOT platform and model architecture': 'Voir l’architecture de la plateforme et des modèles C-PILOT',
-      'View Evadid on Google Play': 'Voir Evadid sur Google Play',
+      'View Neurosity Crown Monitor on GitHub': 'Voir le moniteur Neurosity Crown sur GitHub',
+      'View J’aime evaluer on the App Store': 'Voir J’aime évaluer sur l’App Store',
+      'View J’aime evaluer on Google Play': 'Voir J’aime évaluer sur Google Play',
+      'Visit the Vases d’Honneur Chicoutimi website': 'Visiter le site Vases d’Honneur Chicoutimi',
+      'Visit Pastor Abraham Andebi’s website': 'Visiter le site du pasteur Abraham Andebi',
+      'View the Pasteur Abraham Andebi site on GitHub': 'Voir le site Pasteur Abraham Andebi sur GitHub',
+      'View Tech Event on GitHub': 'Voir Tech Event sur GitHub',
+      'Download the Tech Event APK': 'Télécharger l’APK de Tech Event',
       'View PayTicket on Google Play': 'Voir PayTicket sur Google Play',
       'View Hupe on Google Play': 'Voir Hupe sur Google Play',
-      'Visit Pastor Abraham Andebi’s website': 'Visiter le site du pasteur Abraham Andebi'
+      'Visit the Bel Ice shop': 'Visiter la boutique Bel Ice',
+      'Previous project': 'Projet précédent',
+      'Next project': 'Projet suivant'
     },
     placeholder: {
       'Your Name': 'Votre nom',
@@ -244,14 +268,14 @@
   const normalize = value => value.trim().replace(/\s+/g, ' ');
   const pageCopy = {
     en: {
-      title: 'Florent Gotliebe AKPA | Software & AI Developer',
-      description: 'Software and AI developer in Chicoutimi, Canada. I build web and mobile applications and applied machine-learning systems, including the C-PILOT research project.',
-      socialDescription: 'Software and AI developer in Chicoutimi, Canada. Web, mobile and applied machine-learning projects, including C-PILOT.'
+      title: 'Florent Gotliebe AKPA | Software and AI Developer Portfolio',
+      description: 'Portfolio of K. Gotliebe Florent AKPA, software and AI developer in Chicoutimi, Quebec. Web and mobile applications, Flutter, Laravel, React and applied machine learning, including the C-PILOT research platform.',
+      socialDescription: 'Web and mobile applications and applied machine learning, from Chicoutimi, Quebec. Projects include C-PILOT, J\'aime evaluer and Espace Vases d\'Honneur.'
     },
     fr: {
-      title: 'Florent Gotliebe AKPA | Développeur logiciel et IA',
-      description: 'Développeur logiciel et IA à Chicoutimi, au Canada. Applications web et mobiles, apprentissage automatique appliqué et projet de recherche C-PILOT.',
-      socialDescription: 'Développeur logiciel et IA à Chicoutimi, au Canada. Projets web, mobiles et d’apprentissage automatique appliqué, dont C-PILOT.'
+      title: 'Florent Gotliebe AKPA | Portfolio de développeur logiciel et IA',
+      description: 'Portfolio de K. Gotliebe Florent AKPA, développeur logiciel et IA à Chicoutimi, au Québec. Applications web et mobiles, Flutter, Laravel, React et apprentissage automatique appliqué, dont la plateforme de recherche C-PILOT.',
+      socialDescription: 'Applications web et mobiles et apprentissage automatique appliqué, depuis Chicoutimi, au Québec. Projets dont C-PILOT, J’aime évaluer et l’Espace Vases d’Honneur.'
     }
   };
 

@@ -244,36 +244,48 @@
 
       let portfolioFilters = select('#portfolio-flters li', true);
 
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
+      const applyFilter = (chosen) => {
         portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
+          const isActive = el === chosen;
+          el.classList.toggle('filter-active', isActive);
+          el.setAttribute('aria-pressed', String(isActive));
         });
-        this.classList.add('filter-active');
 
         portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
+          filter: chosen.getAttribute('data-filter')
         });
+      };
+
+      on('click', '#portfolio-flters li', function(e) {
+        e.preventDefault();
+        applyFilter(this);
+      }, true);
+
+      // The filters are list items, so Enter and Space have to be handled here.
+      on('keydown', '#portfolio-flters li', function(e) {
+        if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+        e.preventDefault();
+        applyFilter(this);
       }, true);
     }
 
   });
 
   /**
-   * Initiate portfolio lightbox
+   * Screenshot lightbox used inside the project panel.
+   * The panel rebuilds its content, so the instance is recreated on demand.
    */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
-
-  /**
-   * Initiate portfolio details lightbox
-   */
-  const portfolioDetailsLightbox = GLightbox({
-    selector: '.portfolio-details-lightbox',
-    width: '90%',
-    height: '90vh'
-  });
+  let projectGlightbox = null;
+  window.ProjectLightbox = {
+    refresh() {
+      projectGlightbox?.destroy();
+      projectGlightbox = GLightbox({
+        selector: '.glightbox-project',
+        touchNavigation: true,
+        loop: false
+      });
+    }
+  };
 
   /**
    * Animation on scroll
@@ -578,7 +590,9 @@
   /**
    * Tilt Effect on Cards
    */
-  const tiltCards = select('.education-card, .service-box, .portfolio-wrap', true);
+  // Project cards are left out on purpose: they now hold text and buttons, and a
+  // tilting surface makes them harder to read and to aim at.
+  const tiltCards = select('.education-card, .service-box', true);
   tiltCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
