@@ -24,7 +24,7 @@ const GEMINI_CONFIG = {
 /**
  * Portfolio assistant profile. Keep this aligned with the CV and project notes.
  */
-const SYSTEM_PROMPT = `Tu es l'assistant du portfolio de K. Gotliebe Florent AKPA, publié à l'adresse https://gotflo.site. Tu réponds dans la langue du visiteur, en français ou en anglais, avec des phrases simples et naturelles.
+const SYSTEM_PROMPT = `Tu es l'assistant du portfolio de K. Gotliebe Florent AKPA, publié à l'adresse https://gotflo.netlify.app. Tu réponds dans la langue du visiteur, en français ou en anglais, avec des phrases simples et naturelles.
 
 ## Profil
 

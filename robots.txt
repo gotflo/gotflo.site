@@ -4,4 +4,4 @@ Allow: /
 # Nothing here needs to stay out of search results.
 Disallow: /forms/
 
-Sitemap: https://gotflo.site/sitemap.xml
+Sitemap: https://gotflo.netlify.app/sitemap.xml
